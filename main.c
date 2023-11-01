@@ -24,7 +24,9 @@ int main() {
     }
     char input = '-';
     int inputDeletar = 0;
+    int inputalterar = 0;
     int resultado;
+    char mud;
     while(state.loop == FUNCIONANDO){
         menu();
         scanf_s(" %c", &input);
@@ -64,6 +66,36 @@ int main() {
                 getchar();
                 break;
             case '4':
+                if(state.tamanho == 0){
+                    printf("Nao ha tarefas a serem alteradas.\n");
+                    break;
+                }
+                listarTarefas(&state);
+                do{
+                    printf("Digite a posicao na lista da tarefa a ser alterada (1-%d).\n", state.tamanho);
+                    resultado = scanf("%d", &inputalterar);
+                }while(resultado != 1 || inputalterar > state.tamanho || inputalterar < 0);
+                    printf("O que voce deseja alterar?(P/D/C)\n");
+                    int c;
+                    while ((c = getchar()) != '\n' && c != EOF) { }
+                    scanf("%c",&mud);
+                    if(mud=='P'){
+                        printf("Digite a nova prioridade: \n");
+                        scanf("%d", &state.memoria[inputalterar].prioridade);
+                    }
+                    if(mud=='C'){
+                        printf("Digite a nova categoria: ");
+                        scanf("%s", state.memoria[inputalterar].categoria);
+                    }
+                    if(mud=='D'){
+                        printf("Digite a nova descricao: ");
+                        scanf("%s", state.memoria[inputalterar].descricao);
+                    }
+                else{
+                    printf("Erro ao alterar tarefa.\n");
+                }
+                break;
+            case '5':
                 if(salvar(state) == ERRO){
                     char inputSalvar = '-';
                     do{

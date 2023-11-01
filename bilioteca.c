@@ -7,7 +7,8 @@ void menu(){
     printf("1. Cadastrar tarefa\n");
     printf("2. Excluir tarefa\n");
     printf("3. Listar tarefas\n");
-    printf("4. Sair\n");
+    printf("4. Alterar tarefas\n");
+    printf("5. Sair\n");
 };
 
 int criarTarefa(struct estadoPrograma *state){
@@ -89,6 +90,24 @@ int listarTarefas(struct estadoPrograma *state){
  * deletado ainda existir na array, ele nao eh computado. Quando o usuario criar outra tarefa, as tarefas que nao sao
  * computadas serao sobrescritas, e como o tamanho aumentara, serao lidas.*/
 int deletarTarefa(struct estadoPrograma *state, int index){
+    int novoIndex = index-1; // o input começa em 1 para melhor listagem de tarefas
+    /* caso a tarefa seja a ultima, retorna ok pra nao dar erro no runtime (i+1 seria invalido)
+     * como o alvo ja eh o ultimo item da array, entao faz sentido retornar OK e apenas diminuir
+     * o tamanho na main*/
+    if(novoIndex == state->tamanho-1){
+        return OK;
+    }
+    else if(state->tamanho > 0){
+        for(int i = novoIndex; i < state->tamanho - 1; i++){
+            state->memoria[i] = state->memoria[i+1];
+        }
+        return OK;
+    }
+    else{
+        return ERRO;
+    }
+}
+int alterarTarefa(struct estadoPrograma *state, int index){
     int novoIndex = index-1; // o input começa em 1 para melhor listagem de tarefas
     /* caso a tarefa seja a ultima, retorna ok pra nao dar erro no runtime (i+1 seria invalido)
      * como o alvo ja eh o ultimo item da array, entao faz sentido retornar OK e apenas diminuir
