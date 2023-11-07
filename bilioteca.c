@@ -107,21 +107,30 @@ int deletarTarefa(struct estadoPrograma *state, int index){
         return ERRO;
     }
 }
-int alterarTarefa(struct estadoPrograma *state, int index){
-    int novoIndex = index-1; // o input começa em 1 para melhor listagem de tarefas
-    /* caso a tarefa seja a ultima, retorna ok pra nao dar erro no runtime (i+1 seria invalido)
-     * como o alvo ja eh o ultimo item da array, entao faz sentido retornar OK e apenas diminuir
-     * o tamanho na main*/
-    if(novoIndex == state->tamanho-1){
-        return OK;
+int alterarTarefa(struct estadoPrograma *state){
+    char alt;
+    int inputalterar = 0;
+    int resultado;
+    printf("Digite a posicao na lista da tarefa a ser alterada (1-%d).\n", state->tamanho);
+    resultado = scanf("%d", &inputalterar);
+    while(resultado != 1 || inputalterar > state->tamanho || inputalterar < 0);
+    printf("O que voce deseja alterar?(P/D/C)\n");
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) { }
+    scanf("%c",&alt);
+    if(alt=='P'){
+        printf("Digite a nova prioridade: \n");
+        scanf("%d", &state->memoria[inputalterar-1].prioridade);
     }
-    else if(state->tamanho > 0){
-        for(int i = novoIndex; i < state->tamanho - 1; i++){
-            state->memoria[i] = state->memoria[i+1];
-        }
-        return OK;
+    else if(alt=='C'){
+        printf("Digite a nova categoria: ");
+        scanf("%s", state->memoria[inputalterar-1].categoria);
+    }
+    else if(alt=='D'){
+        printf("Digite a nova descricao: ");
+        scanf("%s", state->memoria[inputalterar-1].descricao);
     }
     else{
-        return ERRO;
+        printf("Erro ao alterar tarefa.\n");
     }
 }

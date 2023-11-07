@@ -33,6 +33,6 @@ int criarTarefa(struct estadoPrograma *state);
 int salvar(struct estadoPrograma state);
 int listarTarefas(struct estadoPrograma *state);
 int deletarTarefa(struct estadoPrograma *state, int index);
-void input(char entrada[], char *saida);
-int alterarTarefa(struct estadoPrograma *state, int index);
+//void input(char entrada[], char *saida);
+int alterarTarefa(struct estadoPrograma *state);
 #endif //PROJETO_TAREFAS_BIBLIOTECA_H
