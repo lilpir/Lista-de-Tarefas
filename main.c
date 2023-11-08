@@ -74,6 +74,15 @@ int main() {
                 alterarTarefa(&state);
                 break;
             case '5':
+                if(state.tamanho == 0){
+                    printf("Nao ha tarefas.\n");
+                    break;
+                }
+                listarTarefas(&state);
+                filprior(&state);
+                printf("\n");
+                break;
+            case '6':
                 if(salvar(state) == ERRO){
                     char inputSalvar = '-';
                     do{

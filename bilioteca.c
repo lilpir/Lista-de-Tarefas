@@ -8,7 +8,8 @@ void menu(){
     printf("2. Excluir tarefa\n");
     printf("3. Listar tarefas\n");
     printf("4. Alterar tarefas\n");
-    printf("5. Sair\n");
+    printf("5. Filtrar tarefas por prioridade\n");
+    printf("6. Sair\n");
 };
 
 int criarTarefa(struct estadoPrograma *state){
@@ -132,5 +133,20 @@ int alterarTarefa(struct estadoPrograma *state){
     }
     else{
         printf("Erro ao alterar tarefa.\n");
+    }
+}
+int filprior(struct estadoPrograma *state){
+    int pr;
+    int x=0;
+    printf("Digite a prioridade desejada (1-10).\n");
+    scanf("%d",&pr);
+    for (int i = 0; i < state->tamanho; ++i) {
+        if(pr==state->memoria[i].prioridade){
+            x++;
+            printf("\nTarefa %d.\n", x);
+            printf("Prioridade: %d\n", state->memoria[i].prioridade);
+            printf("Descricao: %s\n", state->memoria[i].descricao);
+            printf("Categoria: %s\n", state->memoria[i].categoria);
+        }
     }
 }
