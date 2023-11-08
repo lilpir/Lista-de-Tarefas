@@ -9,7 +9,10 @@ void menu(){
     printf("3. Listar tarefas\n");
     printf("4. Alterar tarefas\n");
     printf("5. Filtrar tarefas por prioridade\n");
-    printf("6. Sair\n");
+    printf("6. Filtrar tarefas por categoria\n");
+    printf("7. Filtrar tarefas por descricao\n");
+    printf("8. Filtrar tarefas por prioridade e categoria\n");
+    printf("9. Sair\n");
 };
 
 int criarTarefa(struct estadoPrograma *state){
@@ -148,5 +151,65 @@ int filprior(struct estadoPrograma *state){
             printf("Descricao: %s\n", state->memoria[i].descricao);
             printf("Categoria: %s\n", state->memoria[i].categoria);
         }
+    }
+    if (x==0){
+        printf("\nNao ha tarefas com essa prioridade\n");
+    }
+}
+int filcat(struct estadoPrograma *state){
+    char cat[100];
+    int x=0;
+    printf("Digite a categoria desejada.\n");
+    scanf("%s",cat);
+    for (int i = 0; i < state->tamanho; ++i) {
+        if(strcmp(cat,state->memoria[i].categoria)==0){
+            x++;
+            printf("\nTarefa %d.\n", x);
+            printf("Prioridade: %d\n", state->memoria[i].prioridade);
+            printf("Descricao: %s\n", state->memoria[i].descricao);
+            printf("Categoria: %s\n", state->memoria[i].categoria);
+        }
+    }
+    if (x==0){
+        printf("\nNao ha tarefas com essa categoria\n");
+    }
+}
+int fildes(struct estadoPrograma *state){
+    char des[100];
+    int x=0;
+    printf("Digite a descricao desejada.\n");
+    scanf("%s",des);
+    for (int i = 0; i < state->tamanho; ++i) {
+        if(strcmp(des,state->memoria[i].descricao) ==0){
+            x++;
+            printf("\nTarefa %d.\n", x);
+            printf("Prioridade: %d\n", state->memoria[i].prioridade);
+            printf("Descricao: %s\n", state->memoria[i].descricao);
+            printf("Categoria: %s\n", state->memoria[i].categoria);
+        }
+    }
+    if (x==0){
+        printf("\nNao ha tarefas com essa descricao\n");
+    }
+}
+int filpecat(struct estadoPrograma *state){
+    int pr;
+    char cat[100];
+    int x=0;
+    printf("Digite a categoria desejada.\n");
+    scanf("%s",cat);
+    printf("Digite a prioridade desejada.\n");
+    scanf("%d",&pr);
+    for (int i = 0; i < state->tamanho; ++i) {
+        if(pr==state->memoria[i].prioridade && strcmp(cat,state->memoria[i].categoria)==0){
+            x++;
+            printf("\nTarefa %d.\n", x);
+            printf("Prioridade: %d\n", state->memoria[i].prioridade);
+            printf("Descricao: %s\n", state->memoria[i].descricao);
+            printf("Categoria: %s\n", state->memoria[i].categoria);
+        }
+    }
+    if (x==0){
+        printf("\nNao ha tarefas com essa descricao e categoria\n");
     }
 }

@@ -36,4 +36,7 @@ int deletarTarefa(struct estadoPrograma *state, int index);
 //void input(char entrada[], char *saida);
 int alterarTarefa(struct estadoPrograma *state);
 int filprior(struct estadoPrograma *state);
+int filcat(struct estadoPrograma *state);
+int fildes(struct estadoPrograma *state);
+int filpecat(struct estadoPrograma *state);
 #endif //PROJETO_TAREFAS_BIBLIOTECA_H

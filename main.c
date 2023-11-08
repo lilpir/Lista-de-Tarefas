@@ -83,6 +83,33 @@ int main() {
                 printf("\n");
                 break;
             case '6':
+                if(state.tamanho == 0){
+                    printf("Nao ha tarefas.\n");
+                    break;
+                }
+                listarTarefas(&state);
+                filcat(&state);
+                printf("\n");
+                break;
+            case '7':
+                if(state.tamanho == 0){
+                    printf("Nao ha tarefas.\n");
+                    break;
+                }
+                listarTarefas(&state);
+                fildes(&state);
+                printf("\n");
+                break;
+            case '8':
+                if(state.tamanho == 0){
+                    printf("Nao ha tarefas.\n");
+                    break;
+                }
+                listarTarefas(&state);
+                filpecat(&state);
+                printf("\n");
+                break;
+            case '9':
                 if(salvar(state) == ERRO){
                     char inputSalvar = '-';
                     do{
