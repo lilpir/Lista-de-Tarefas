@@ -19,6 +19,7 @@ struct tarefa{
     int prioridade;
     char descricao[300];
     char categoria[100];
+    char status[15];
 };
 
 struct estadoPrograma{
@@ -37,6 +38,9 @@ int deletarTarefa(struct estadoPrograma *state, int index);
 int alterarTarefa(struct estadoPrograma *state);
 int filprior(struct estadoPrograma *state);
 int filcat(struct estadoPrograma *state);
-int fildes(struct estadoPrograma *state);
+int filstatus(struct estadoPrograma *state);
 int filpecat(struct estadoPrograma *state);
+void exprior(struct estadoPrograma *state);
+void expcat(struct estadoPrograma *state);
+void expriorecat(struct estadoPrograma *state);
 #endif //PROJETO_TAREFAS_BIBLIOTECA_H

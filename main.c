@@ -22,17 +22,17 @@ int main() {
         state.tamanho = t;
         printf("Arquivo nao encontrado!\ndados.bin foi criado com sucesso.\n");
     }
-    char input = '-';
+    int input;
     int inputDeletar = 0;
     int inputalterar = 0;
     int resultado;
     char mud;
     while(state.loop == FUNCIONANDO){
         menu();
-        scanf(" %c", &input);
+        scanf(" %d", &input);
         getchar();
         switch(input){
-            case '1':
+            case 1:
                 if(criarTarefa(&state) == OK){
                     ++state.tamanho;
                 }
@@ -40,7 +40,7 @@ int main() {
                     printf("ERRO:\nNao ha memoria disponivel.\n");
                 }
                 break;
-            case '2':
+            case 2:
                 if(state.tamanho == 0){
                     printf("Nao ha tarefas a serem excluidas.\n");
                     break;
@@ -58,14 +58,14 @@ int main() {
                     printf("Erro ao deletar tarefa.\n");
                 }
                 break;
-            case '3':
+            case 3:
                 if(listarTarefas(&state)==ERRO){
                     printf("Nao ha tarefas para serem lidas.\n");
                 }
                 printf("Pressione qualquer tecla pra continuar...\n");
                 getchar();
                 break;
-            case '4':
+            case 4:
                 if(state.tamanho == 0){
                     printf("Nao ha tarefas a serem alteradas.\n");
                     break;
@@ -73,7 +73,7 @@ int main() {
                 listarTarefas(&state);
                 alterarTarefa(&state);
                 break;
-            case '5':
+            case 5:
                 if(state.tamanho == 0){
                     printf("Nao ha tarefas.\n");
                     break;
@@ -82,7 +82,7 @@ int main() {
                 filprior(&state);
                 printf("\n");
                 break;
-            case '6':
+            case 6:
                 if(state.tamanho == 0){
                     printf("Nao ha tarefas.\n");
                     break;
@@ -91,16 +91,16 @@ int main() {
                 filcat(&state);
                 printf("\n");
                 break;
-            case '7':
+            case 7:
                 if(state.tamanho == 0){
                     printf("Nao ha tarefas.\n");
                     break;
                 }
                 listarTarefas(&state);
-                fildes(&state);
+                filstatus(&state);
                 printf("\n");
                 break;
-            case '8':
+            case 8:
                 if(state.tamanho == 0){
                     printf("Nao ha tarefas.\n");
                     break;
@@ -109,7 +109,31 @@ int main() {
                 filpecat(&state);
                 printf("\n");
                 break;
-            case '9':
+            case 9:
+                if(state.tamanho == 0){
+                    printf("Nao ha tarefas.\n");
+                    break;
+                }
+                listarTarefas(&state);
+                exprior(&state);
+                printf("\n");
+            case 10:
+                if(state.tamanho == 0){
+                    printf("Nao ha tarefas.\n");
+                    break;
+                }
+                listarTarefas(&state);
+                expcat(&state);
+                printf("\n");
+            case 11:
+                if(state.tamanho == 0){
+                    printf("Nao ha tarefas.\n");
+                    break;
+                }
+                listarTarefas(&state);
+                expriorecat(&state);
+                printf("\n");
+            case 12:
                 if(salvar(state) == ERRO){
                     char inputSalvar = '-';
                     do{
