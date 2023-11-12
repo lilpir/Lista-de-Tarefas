@@ -12,8 +12,8 @@ void menu(){
     printf("6. Filtrar tarefas por categoria\n");
     printf("7. Filtrar tarefas por status\n");
     printf("8. Filtrar tarefas por prioridade e categoria\n");
-    printf("9. Filtrar tarefas por prioridade\n");
-    printf("10. Filtrar tarefas por categoria\n");
+    printf("9. Exportar tarefas por prioridade\n");
+    printf("10. Exportar tarefas por categoria\n");
     printf("11. Exportar tarefas por prioridade e categoria\n");
     printf("12. Sair\n");
 };
